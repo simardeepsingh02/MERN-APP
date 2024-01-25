@@ -1,3 +1,4 @@
 [build]
   command = "npm run build"
   publish = "build"  # Adjust if your build output directory is different
+  NODE_VERSION = "14"  # Adjust to the Node.js version used in your project
