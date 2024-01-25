@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const Update = () => {
-  const [fname, setName] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [age, setAge] = useState(0);
 
@@ -27,7 +27,7 @@ const Update = () => {
   //passing edited data to backend
   const handleUpdate = async (e) => {
     e.preventDefault();
-    const updatedUser = { fname, email, age };
+    const updatedUser = { name, email, age };
     console.log(updatedUser);
     const response = await fetch(`https://astro-y23d.onrender.com/edit/${id}`, {
       method: "PATCH",
@@ -62,7 +62,7 @@ const Update = () => {
           <input
             type="text"
             className="form-control"
-            value={fname}
+            value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </div>
