@@ -50,6 +50,7 @@ const Update = () => {
 
   useEffect(() => {
     getSingleData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
