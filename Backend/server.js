@@ -9,7 +9,7 @@ dotenv.config();
 
 // Enable CORS for all routes
 app.use(cors({
-    origin: 'https://astro-y23d.onrender.com/',
+    origin: '*',
     methods: 'GET, POST, PUT, DELETE',
     allowedHeaders: 'Content-Type',
   }));
