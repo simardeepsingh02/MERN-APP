@@ -29,7 +29,7 @@ const Update = () => {
     e.preventDefault();
     const updatedUser = { fname, email, age };
     console.log(updatedUser);
-    const response = await fetch(`https://astro-y23d.onrender.com/${id}`, {
+    const response = await fetch(`https://astro-y23d.onrender.com/edit/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
