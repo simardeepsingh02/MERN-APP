@@ -58,4 +58,14 @@ router.patch("/edit/:id", async (req, res) => {
   }
 });
 
+//GET SINGLE USER
+router.get("/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const singleUser = await userData.findById({ _id: id });
+    res.status(200).json(singleUser);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 module.exports = router;
