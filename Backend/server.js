@@ -10,7 +10,7 @@ dotenv.config();
 // Enable CORS for all routes
 app.use(cors({
     origin: '*',
-    methods: 'GET, POST, PUT, DELETE',
+    methods: 'GET, POST, PUT, DELETE,PATCH',
     allowedHeaders: 'Content-Type',
   }));
 const userRoute = require("./routes/userRoute");
