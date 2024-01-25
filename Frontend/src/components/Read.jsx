@@ -4,6 +4,25 @@ const Read = () => {
   const [data, setData] = useState();
   const [error, setError] = useState();
 
+  async function handleDelete(id) {
+    const response = await fetch(`https://astro-y23d.onrender.com/${id}`, {
+      method: "DELETE",
+    });
+
+    const result1 = await response.json();
+    if (!response.ok) {
+      setError(result1.error);
+    }
+    if (response.ok) {
+      console.log("deleted", response.ok);
+      setError("Deleted Successfully");
+      setTimeout(() => {
+        setError("");
+        getData();
+      }, 1000);
+    }
+  }
+
   async function getData() {
     const response = await fetch("https://astro-y23d.onrender.com/");
     const result = await response.json();
@@ -13,12 +32,10 @@ const Read = () => {
     }
 
     if (response.ok) {
-      console.log(response.ok);
       setData(result);
       setError("");
     }
   }
-
 
   useEffect(() => {
     getData();
@@ -37,7 +54,9 @@ const Read = () => {
                 <p className="card-text">{ele.age}</p>
                 <span className="card-link">Edit</span>
 
-                <span className="card-link">Delete</span>
+                <span className="card-link" onClick={() => handleDelete(ele._id)}>
+                  Delete
+                </span>
               </div>
             </div>
           </div>
