@@ -16,9 +16,9 @@ const Update = () => {
   const getSingleData = async () => {
     const response = await fetch(`https://astro-y23d.onrender.com/${id}`);
     const result = await response.json();
-    if (!response.ok || result.name==null) {
-      console.log(response.error);
-      setError(response.error);
+    if (result==null || result.name==null) {
+      console.log("Error");
+      setError("Error");
     }
     else if (response.ok) {
       setName(result.name);
