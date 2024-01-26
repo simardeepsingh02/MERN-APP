@@ -14,7 +14,7 @@ const Login = () => {
     const response = await fetch(`https://astro-y23d.onrender.com/signin/${email}/${password}`);
     const result1 = await response.json();
     if (!response.ok) {
-      setError("Email not found");
+      setError("Error");
     }
     if (response.ok) {
       console.log("Success", response.ok);
@@ -23,12 +23,14 @@ const Login = () => {
       }
       else if(result1.res=="Fail"){
         setError("Login Failed");
+      }else {
+        setError("Wrong Email");
       }
+    }
       
       setTimeout(() => {
         setError("");
       }, 2000);
-  }
 };
 
 

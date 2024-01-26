@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const Create = () => {
   const [name, setName] = useState("");
+  const [password, setPass] = useState("");
   const [email, setEmail] = useState("");
   const [age, setAge] = useState(0);
   const [error, setError] = useState("");
@@ -11,7 +12,7 @@ const Create = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    var addUser = { name, email, age };
+    var addUser = { name, password, email, age };
     console.log(addUser);
 
     const response = await fetch("https://astro-y23d.onrender.com/", {
@@ -51,6 +52,15 @@ const Create = () => {
             className="form-control"
             value={name}
             onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Password</label>
+          <input
+            type="password"
+            className="form-control"
+            value={password}
+            onChange={(e) => setPass(e.target.value)}
           />
         </div>
         <div className="mb-3">
