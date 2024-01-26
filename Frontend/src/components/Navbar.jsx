@@ -13,13 +13,13 @@ const Navbar = () => {
     <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
-          <Link to="/" className="nav-link" >Register</Link>
+          <Link to="/" className="nav-link" >Login </Link>
         </li>
         <li className="nav-item">
           <Link to="/read" className="nav-link" >All Users</Link>
         </li>
         <li className="nav-item">
-          <Link to="/signin" className="nav-link" >Login </Link>
+          <Link to="/signin" className="nav-link" >Register </Link>
         </li>
       </ul>
       <form className="d-flex" role="search">
