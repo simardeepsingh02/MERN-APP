@@ -62,7 +62,7 @@ router.patch("/edit/:id", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const singleUser = await userData.find({ email: id });
+    const singleUser = await userData.findOne({ email: id });
     res.status(200).json(singleUser);
   } catch (error) {
     res.status(500).json({ error: error.message });
