@@ -16,12 +16,16 @@ const Update = () => {
   const getSingleData = async () => {
     const response = await fetch(`https://astro-y23d.onrender.com/${id}`);
     const result = await response.json();
-
-    if (response.ok) {
+    if (response.name==null) {
+      console.log(response.error);
+      setError(response.error);
+    }
+    else if (response.ok) {
       setName(result.name);
       setEmail(result.email);
       setAge(result.age);
     }
+    
   };
 
   //passing edited data to backend
@@ -29,7 +33,7 @@ const Update = () => {
     e.preventDefault();
     const updatedUser = { name, email, age };
     console.log(updatedUser);
-    const response = await fetch(`https://astro-y23d.onrender.com/edit/${id}`, {
+    const response = await fetch(`https://astro-y23d.onrender.com/edit/${email}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

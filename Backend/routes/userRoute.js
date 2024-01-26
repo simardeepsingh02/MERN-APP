@@ -7,12 +7,13 @@ const mongoose = require("mongoose");
 //CREATE
 router.post("/", async (req, res) => {
   console.log(req.body);
-  const { name, email, age } = req.body;
+  const { name, email, age ,password} = req.body;
   try {
     const userAdded = await userData.create({
       name: name,
       email: email,
       age: age,
+      password:password
     });
     res.status(201).json(userAdded);
   } catch (error) {
@@ -52,6 +53,7 @@ router.patch("/edit/:id", async (req, res) => {
     const updatedUser = await userData.findByIdAndUpdate(id, req.body, {
       new: true,
     });
+    updatedUser.password="0";
     res.status(200).json(updatedUser);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -68,4 +70,23 @@ router.get("/:id", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
+//GET Login
+router.get("/signin", async (req, res) => {
+  const { id } = req.params;
+  console.log("get body", req.body);
+  try {
+    const singleUser = await userData.findOne({ email: id });
+    if(singleUser.password==password){
+      res.status(200).json("Success");
+    }
+    else{
+      res.status(200).json("Failed");
+    }
+    
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 module.exports = router;

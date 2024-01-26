@@ -21,6 +21,9 @@ const Navbar = () => {
         <li className="nav-item">
           <Link to="/:id" className="nav-link" >Update </Link>
         </li>
+        <li className="nav-item">
+          <Link to="/signin" className="nav-link" >Login </Link>
+        </li>
       </ul>
       <form className="d-flex" role="search">
         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
