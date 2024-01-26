@@ -72,12 +72,15 @@ router.get("/:id", async (req, res) => {
 });
 
 //GET Login
-router.get("/signin", async (req, res) => {
+router.get("/signin/:id/:pass", async (req, res) => {
   const { id } = req.params;
-  console.log("get body", req.body);
+  const { pass } = req.params;
   try {
     const singleUser = await userData.findOne({ email: id });
-    if(singleUser.password==password){
+    if(singleUser==null){
+      res.status(200).json("Wrong Email");
+    }
+    else if(singleUser.password==pass){
       res.status(200).json("Success");
     }
     else{
