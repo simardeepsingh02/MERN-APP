@@ -50,7 +50,7 @@ router.patch("/edit/:id", async (req, res) => {
   console.log("get id", id);
   //const { name, email, age } = req.body;
   try {
-    const updatedUser = await userData.findByIdAndUpdate(id, req.body, {
+    const updatedUser = await userData.findOneAndUpdate({email:id}, req.body, {
       new: true,
     });
     updatedUser.password="0";
