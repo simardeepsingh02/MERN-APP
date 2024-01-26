@@ -2,27 +2,13 @@
 
 # Build settings
 [build]
-  # Set the base directory where Netlify installs dependencies and runs the build command.
   base = "Frontend"
-
-  # For monorepos, set the package directory if it is different from the base directory.
-  package = "Frontend/"
-
-  # Set the build command. Adjust it based on your project's build process.
   command = "npm run build"
-
-  # Set the directory where the built files are located.
   publish = "Frontend/build"
-
-  # Set the directory where Netlify can find your compiled functions to deploy them.
   functions = "Frontend/netlify/functions"
 
 # Deploy log visibility
-[build]
-  # Choose between public logs (accessible by anyone) or private logs (accessible by site administrators).
-  log = "public"
+log = "public"
 
 # Build status
-[build]
-  # Choose between active builds (Netlify automatically builds your site) or stopped builds (manual deploys).
-  ignore = false
+ignore = false
