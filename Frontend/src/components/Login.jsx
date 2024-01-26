@@ -7,34 +7,30 @@ const Login = () => {
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
-
+  //passing edited data to backend
   const handleSubmit = async (e) => {
     e.preventDefault();
-    var addUser = { password, email };
-    console.log(addUser);
 
-    const response = await fetch("https://astro-y23d.onrender.com/signin", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(addUser),
-    });
-
-    const result = await response.json();
-
+    const response = await fetch(`https://astro-y23d.onrender.com/signin/${email}/${password}`);
+    const result1 = await response.json();
     if (!response.ok) {
-      console.log(result.error);
-      setError(result.error);
+      setError("Email not found");
     }
     if (response.ok) {
-      console.log(result);
-      setPass("");
-      setEmail("");
-      setError("");
-      navigate("/read");
-    }
-  };
+      console.log("Success", response.ok);
+      if(result1.res=="Success"){
+        setError("Login Successfully");
+      }
+      else if(result1.res=="Fail"){
+        setError("Login Failed");
+      }
+      
+      setTimeout(() => {
+        setError("");
+      }, 2000);
+  }
+};
+
 
   return (
     <div className="container my-2">
