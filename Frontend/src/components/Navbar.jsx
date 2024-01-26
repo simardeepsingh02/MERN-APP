@@ -13,13 +13,10 @@ const Navbar = () => {
     <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
-          <Link to="/" className="nav-link" >Create</Link>
+          <Link to="/" className="nav-link" >Register</Link>
         </li>
         <li className="nav-item">
-          <Link to="/read" className="nav-link" >All Post</Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/:id" className="nav-link" >Update </Link>
+          <Link to="/read" className="nav-link" >All Users</Link>
         </li>
         <li className="nav-item">
           <Link to="/signin" className="nav-link" >Login </Link>
