@@ -25,7 +25,7 @@ router.post("/", async (req, res) => {
 //GET
 router.get("/", async (req, res) => {
     try {
-      const allUsers = await userData.find();
+      const allUsers = await userData.find().select('-password');
       res.status(200).json(allUsers);
     } catch (error) {
       res.status(500).json({ error: error.message });
