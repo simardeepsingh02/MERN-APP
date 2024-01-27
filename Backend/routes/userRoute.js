@@ -78,7 +78,7 @@ router.get("/signin/:id/:pass", async (req, res) => {
   try {
     const singleUser = await userData.findOne({ email: id });
     if(singleUser.password==pass){
-      res.status(200).json({res:"Success"});
+      res.status(200).json({name:singleUser.name,id:singleUser.email});
     }
     else{
       res.status(200).json({res:"Fail"});
