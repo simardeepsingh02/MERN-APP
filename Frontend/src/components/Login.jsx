@@ -10,7 +10,14 @@ const Login = () => {
   //passing edited data to backend
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    if (!email) {
+      setError("Email is required");
+      return;
+    }
+    if (!password) {
+      setError("Password is required");
+      return;
+    }
     const response = await fetch(`https://astro-y23d.onrender.com/signin/${email}/${password}`);
     const result1 = await response.json();
     if (!response.ok) {
