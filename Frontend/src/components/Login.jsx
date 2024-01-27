@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [password, setPass] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   //passing edited data to backend
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,10 +18,10 @@ const Login = () => {
     }
     if (response.ok) {
       console.log("Success", response.ok);
-      if(result1.res=="Success"){
+      if(result1.res==="Success"){
         setError("Login Successfully");
       }
-      else if(result1.res=="Fail"){
+      else if(result1.res==="Fail"){
         setError("Login Failed");
       }else {
         setError("Wrong Email");
