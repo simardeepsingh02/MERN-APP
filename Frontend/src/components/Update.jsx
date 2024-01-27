@@ -12,6 +12,14 @@ const Update = () => {
 
   const navigate = useNavigate();
 
+  // Check user authentication status
+  useEffect(() => {
+    const loggedUserId = sessionStorage.getItem("userId");
+    if (!loggedUserId) {
+      // If user is not logged in, redirect to login page
+      navigate("/");
+    }
+  }, [navigate]);
   //receving single user data
   const getSingleData = async () => {
     const response = await fetch(`https://astro-y23d.onrender.com/${id}`);
