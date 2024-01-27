@@ -35,7 +35,7 @@ const Create = () => {
       setEmail("");
       setAge(0);
       setError("");
-      navigate("/read");
+      navigate("/");
     }
   };
 

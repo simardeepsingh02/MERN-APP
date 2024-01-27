@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import {Link} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 const Read = () => {
   const [data, setData] = useState();
   const [error, setError] = useState();
-
+  const [authenticated, setAuthenticated] = useState(true); // Change to false initially
+  const navigate = useNavigate();
   async function handleDelete(id) {
     const response = await fetch(`https://astro-y23d.onrender.com/${id}`, {
       method: "DELETE",
@@ -38,9 +40,20 @@ const Read = () => {
   }
 
   useEffect(() => {
-    getData();
+    const loggedUserId = sessionStorage.getItem("userId");
+    if (!loggedUserId) {
+      // If user is not logged in, set authenticated to false
+      setAuthenticated(false);
+    } else {
+      // If user is logged in, fetch data
+      getData();
+    }
   }, []);
 
+  if (!authenticated) {
+    navigate("/"); // Redirect to the login page
+    return null; // You can also return an empty component or a loading indicator
+  }
   return (
     <div className="container my-2">
       {error && <div className="alert alert-danger"> {error} </div>}
@@ -52,9 +65,13 @@ const Read = () => {
                 <h5 className="card-title">{ele.name}</h5>
                 <h6 className="card-subtitle mb-2 text-muted">{ele.email}</h6>
                 <p className="card-text">{ele.age}</p>
-                <Link to={`/${ele.email}`} className="card-link">Edit</Link>
-
-                <Link className="card-link" onClick={() => handleDelete(ele._id)}>
+                <Link to={`/${ele.email}`} className="card-link">
+                  Edit
+                </Link>
+                <Link
+                  className="card-link"
+                  onClick={() => handleDelete(ele._id)}
+                >
                   Delete
                 </Link>
               </div>
