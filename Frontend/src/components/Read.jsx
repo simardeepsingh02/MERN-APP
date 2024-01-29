@@ -59,7 +59,7 @@ const Read = () => {
       {error && <div className="alert alert-danger"> {error} </div>}
       <div className="row">
         {data?.map((ele) => (
-          <div key={ele._id} className="col-3">
+          <div key={ele._id} className="col-6 col-sm-3"S>
             <div className="card">
               <div className="card-body">
                 <h5 className="card-title">{ele.name}</h5>
