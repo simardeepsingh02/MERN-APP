@@ -22,7 +22,7 @@ const Update = () => {
   }, [navigate]);
   //receving single user data
   const getSingleData = async () => {
-    const response = await fetch(`https://astro-y23d.onrender.com/${id}`);
+    const response = await fetch(`https://astro-y23d.onrender.com/s/${id}`);
     const result = await response.json();
     if (result==null || result.name==null) {
       console.log("Error");
