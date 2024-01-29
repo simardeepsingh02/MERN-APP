@@ -19,7 +19,7 @@ const Navbar = () => {
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
-    <a className="navbar-brand text-dark font-weight-bolder" style={{ fontFamily: 'Poppins, sans-serif' }} href="#">◥꧁ད 𝙽𝚄𝙼𝙴𝚁𝙾𝚉𝙸𝙽 ཌ꧂◤</a>
+    <a className="navbar-brand text-dark font-weight-bolder" style={{ fontFamily: 'Poppins, sans-serif' }} href="#">N⋆U⋆M⋆E⋆R⋆O⋆Z⋆I⋆N</a>
     <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         {!loggedUserId && (
