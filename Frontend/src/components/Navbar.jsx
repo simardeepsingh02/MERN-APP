@@ -46,9 +46,10 @@ const Navbar = () => {
             <li className="nav-item">
               <form className="d-flex">
                 <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                <button className="btn btn-outline-success text-dark" type="submit">Search</button> {/* Add text-dark class here */}
+                <button className="btn btn-danger text-dark" type="submit">Search</button> {/* Add btn-danger class for a red button */}
               </form>
             </li>
+
           </>
         )}
       </ul>
