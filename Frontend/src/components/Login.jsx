@@ -40,13 +40,11 @@ const Login = () => {
         console.log(result1.id);
         sessionStorage.setItem("userId", result1.id);
         sessionStorage.setItem("userName", result1.name);
-
         // Navigate to the "All Users" page after successful login
-        navigate("/read");
+        navigate("/myslots");
         setError();
       }
-    }
-      
+    }     
       setTimeout(() => {
         setError("");
       }, 2000);

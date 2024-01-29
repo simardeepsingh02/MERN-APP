@@ -14,58 +14,65 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
-      <div className="container-fluid">
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <a className="navbar-brand" href="#">NUMEROZIN</a>
-        <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            {!loggedUserId && (
-              <>
-                <li className="nav-item">
-                  <Link to="/" className="nav-link">Login</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/signin" className="nav-link">Register</Link>
-                </li>
-              </>
-            )}
-            {loggedUserId && (
-              <>
-                <li className="nav-item">
-                  <Link to="/read" className="nav-link">All Users</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link zoom" to="">
-                    Welcome {loggedUserName}
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <form className="d-flex">
-                    <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button className="btn btn-outline-success" type="submit">Search</button>
-                  </form>
-                </li>
-              </>
-            )}
-          </ul>
-          <form className="d-flex" role="search">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              {loggedUserId && (
-                <li className="nav-item">
-                  <Link to="/" className="nav-link" onClick={handleLogout}>
-                    Logout
-                  </Link>
-                </li>
-              )}
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div className="container-fluid">
+    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
+    </button>
+    <a className="navbar-brand text-dark" href="#">NUMEROZIN</a> {/* Add text-dark class here */}
+    <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+        {!loggedUserId && (
+          <>
+            <li className="nav-item">
+              <Link to="/" className="nav-link text-dark">Login</Link> {/* Add text-dark class here */}
+            </li>
+            <li className="nav-item">
+              <Link to="/signin" className="nav-link text-dark">Register</Link> {/* Add text-dark class here */}
+            </li>
+          </>
+        )}
+        {loggedUserId && (
+          <>
+            <li className="nav-item">
+              <Link to="/read" className="nav-link text-dark">All Users</Link> {/* Add text-dark class here */}
+            </li>
+            <li className="nav-item">
+              <Link to="/myslots" className="nav-link text-dark">My Slots</Link> {/* Add text-dark class here */}
+            </li>
+            <li className="nav-item">
+              <Link to="/slots-aval" className="nav-link text-dark">Available Slots</Link> {/* Add text-dark class here */}
+            </li>
+            <li className="nav-item">
+              <form className="d-flex">
+                <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                <button className="btn btn-outline-success text-dark" type="submit">Search</button> {/* Add text-dark class here */}
+              </form>
+            </li>
+          </>
+        )}
+      </ul>
+      <form className="d-flex" role="search">
+        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          {loggedUserId && (
+            <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Welcome {loggedUserName}
+            </a>
+            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><Link className="dropdown-item text-dark" to="/" onClick={handleLogout}>Logout</Link></li>
+              {/* You can add more dropdown items if needed */}
             </ul>
-            {/* Add your search input and button here */}
-          </form>
-        </div>
-      </div>
-    </nav>
+          </li>
+          )}
+        </ul>
+        {/* Add your search input and button here */}
+      </form>
+    </div>
+  </div>
+</nav>
+
+
   );
 };
 
