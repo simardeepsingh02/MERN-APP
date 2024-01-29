@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect,useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const MySlots = () => {
   const [data, setData] = useState();
   const [error, setError] = useState();
-  const [authenticated, setAuthenticated] = useState(true); // Change to false initially
+  const [authenticated,setAuthenticated] = useState(true); // Change to false initially
   const navigate = useNavigate();
 
   async function getData() {
@@ -20,25 +20,6 @@ const MySlots = () => {
       setError("");
     }
   }
-  async function handleBook(id) {
-    const response = await fetch(`https://astro-y23d.onrender.com/book-slot/${id}`, {
-      method: "PUT",
-      body: JSON.stringify({ email: "example@example.com" }),
-    });
-
-    const result1 = await response.json();
-    if (!response.ok) {
-      setError(result1.error);
-    }
-    if (response.ok) {
-      console.log("booked", response.ok);
-      setError("Booked Successfully");
-      setTimeout(() => {
-        setError("");
-        getData();
-      }, 1000);
-    }
-  }
   useEffect(() => {
     const loggedUserId = sessionStorage.getItem("userId");
     if (!loggedUserId) {
@@ -49,7 +30,6 @@ const MySlots = () => {
       getData();
     }
   }, []);
-
   if (!authenticated) {
     navigate("/"); // Redirect to the login page
     return null; // You can also return an empty component or a loading indicator
@@ -69,12 +49,7 @@ const MySlots = () => {
                 Time: {new Date(ele.startTime).toLocaleTimeString()} -{" "}
                 {new Date(ele.endTime).toLocaleTimeString()}
               </h6>
-              <Link
-                  className="card-link"
-                  onClick={() => handleBook(ele._id)}
-              >
-                Booked
-              </Link>
+
               </div>
             </div>
           </div>
