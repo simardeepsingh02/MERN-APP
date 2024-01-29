@@ -49,7 +49,19 @@ const SlotsAvailable = () => {
       getData();
     }
   }, []);
+  function formatDate(date) {
+    const options = { year: "numeric", month: "numeric", day: "numeric" };
+    return new Date(date).toLocaleDateString(undefined, options);
+  }
 
+  function formatTimeRange(startTime, endTime) {
+    const options = { hour: "numeric", minute: "2-digit" };
+
+    const formattedStartTime = new Date(startTime).toLocaleTimeString([], options);
+    const formattedEndTime = new Date(endTime).toLocaleTimeString([], options);
+
+    return `${formattedStartTime} - ${formattedEndTime}`;
+  }
   if (!authenticated) {
     navigate("/"); // Redirect to the login page
     return null; // You can also return an empty component or a loading indicator
@@ -63,12 +75,11 @@ const SlotsAvailable = () => {
             <div className="card">
               <div className="card-body">
               <h5 className="card-title">
-                Date: {new Date(ele.startTime).toLocaleDateString()}
-              </h5>
-              <h6 className="card-subtitle mb-2 text-muted">
-                Time: {new Date(ele.startTime).toLocaleTimeString()} -{" "}
-                {new Date(ele.endTime).toLocaleTimeString()}
-              </h6>
+                  Date: {formatDate(ele.startTime)}
+                </h5>
+                <h6 className="card-subtitle mb-2 text-muted">
+                  Time: {formatTimeRange(ele.startTime, ele.endTime)}
+                </h6>
               <Link
                   className="card-link"
                   onClick={() => handleBook(ele._id)}
