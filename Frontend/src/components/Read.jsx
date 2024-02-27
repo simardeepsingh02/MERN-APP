@@ -65,7 +65,7 @@ const Read = () => {
                 <h5 className="card-title">{ele.name}</h5>
                 <h6 className="card-subtitle mb-2 text-muted">{ele.email}</h6>
                 <p className="card-text">{ele.age}</p>
-                <Link to={`/${ele.email}`} className="card-link">
+                <Link to={`/edit/${ele.email}`} className="card-link">
                   Edit
                 </Link>
                 <Link

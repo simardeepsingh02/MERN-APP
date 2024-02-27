@@ -9,7 +9,7 @@ const Login = () => {
     const loggedUserId = sessionStorage.getItem("userId");
     if (loggedUserId) {
       // Redirect to the "All Users" page if user is already logged in
-      navigate("/read");
+      navigate("/slots");
     }
   }, [navigate]);
   //const navigate = useNavigate();
